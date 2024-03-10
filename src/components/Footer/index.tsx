@@ -11,13 +11,13 @@ const Footer: React.FC = () => {
       links={[
         {
           key: 'code',
-          title: '编程在手',
+          title: 'AntD在手',
           href: 'https://pro.ant.design',
           blankTarget: true,
         },
         {
           key: 'antd',
-          title: '前端框架',
+          title: '前端我有',
           href: 'https://ant.design',
           blankTarget: true,
         },
