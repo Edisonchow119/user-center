@@ -1,9 +1,13 @@
-import {ActionType, ProColumns} from '@ant-design/pro-components';
-import {ProTable, TableDropdown} from '@ant-design/pro-components';
-import {useRef} from 'react';
-import {searchUsers} from "@/services/ant-design-pro/api";
-import {Image} from "antd";
-
+import { searchUsers } from '@/services/ant-design-pro/api';
+import {
+  ActionType,
+  PageContainer,
+  ProColumns,
+  ProTable,
+  TableDropdown,
+} from '@ant-design/pro-components';
+import { Image } from 'antd';
+import { useRef } from 'react';
 
 export const waitTimePromise = async (time: number = 100) => {
   return new Promise((resolve) => {
@@ -38,10 +42,8 @@ const columns: ProColumns<API.CurrentUser>[] = [
     title: '头像',
     dataIndex: 'avatarUrl',
     render: (_, entity) => {
-        return <Image src={entity.avatarUrl} alt={entity.username} width={50} />;
-      }
-
-
+      return <Image src={entity.avatarUrl} alt={entity.username} height={35} />;
+    },
   },
   {
     title: '性别',
@@ -87,7 +89,6 @@ const columns: ProColumns<API.CurrentUser>[] = [
     renderFormItem: (_, { defaultRender }) => {
       return defaultRender(_);
     },
-
   },
   {
     title: '操作',
@@ -115,66 +116,67 @@ const columns: ProColumns<API.CurrentUser>[] = [
       />,
     ],
   },
-
 ];
 
 export default () => {
   const actionRef = useRef<ActionType>();
   return (
-    // <PageContainer>
-    <ProTable<API.CurrentUser>
-      columns={columns}
-      actionRef={actionRef}
-      cardBordered
-      request={async (params, sort, filter) => {
-        // console.log(sort, filter);
-        // await waitTime(2000);
-        const userList = await searchUsers();
-        return {
-          data: userList
-        }
-      }}
-      editable={{
-        type: 'multiple',
-      }}
-      columnsState={{
-        persistenceKey: 'pro-table-singe-demos',
-        persistenceType: 'localStorage',
-        defaultValue: {
-          option: { fixed: 'right', disable: true },
-        },
-        onChange(value) {
-          console.log('value: ', value);
-        },
-      }}
-      rowKey="id"
-      search={{
-        labelWidth: 'auto',
-      }}
-      options={{
-        setting: {
-          listsHeight: 400,
-        },
-      }}
-      form={{
-        // 由于配置了 transform，提交的参与与定义的不同这里需要转化一下
-        syncToUrl: (values, type) => {
-          if (type === 'get') {
-            return {
-              ...values,
-              created_at: [values.startTime, values.endTime],
-            };
+    <PageContainer>
+      <ProTable<API.CurrentUser>
+        columns={columns}
+        actionRef={actionRef}
+        cardBordered
+        request={async (params, sort, filter) => {
+          console.log(sort, filter);
+          await waitTime(2000);
+          const userList = await searchUsers();
+          return {
+            data: userList,
+          };
+        }}
+        editable={{
+          type: 'multiple',
+        }}
+        columnsState={{
+          persistenceKey: 'pro-table-singe-demos',
+          persistenceType: 'localStorage',
+          defaultValue: {
+            option: { fixed: 'right', disable: true },
+          },
+          onChange(value) {
+            console.log('value: ', value);
+          },
+        }}
+        rowKey="id"
+        search={{
+          labelWidth: 'auto',
+        }}
+        options={{
+          setting: {
+            listsHeight: 400,
+          },
+        }}
+        form={
+          {
+            // 由于配置了 transform，提交的参与与定义的不同这里需要转化一下
+            // syncToUrl: (values, type) => {
+            //   if (type === 'get') {
+            //     return {
+            //       ...values,
+            //       created_at: [values.startTime, values.endTime],
+            //     };
+            //   }
+            //   return values;
+            // },
           }
-          return values;
-        },
-      }}
-      pagination={{
-        pageSize: 5,
-        onChange: (page) => console.log(page),
-      }}
-      dateFormatter="string"
-      headerTitle="高级表格"
-    />
-    // </PageContainer>
+        }
+        pagination={{
+          pageSize: 5,
+          onChange: (page) => console.log(page),
+        }}
+        dateFormatter="string"
+        headerTitle="高级表格"
+      />
+    </PageContainer>
   );
 };

@@ -1,12 +1,12 @@
-import {Footer} from '@/components';
-import {SYSTEM_LOGO} from '@/constants';
-import {register} from '@/services/ant-design-pro/api';
-import {LockOutlined, UserOutlined,} from '@ant-design/icons';
-import {LoginForm, ProFormText} from '@ant-design/pro-components';
-import {Helmet, history} from '@umijs/max';
-import {message, Tabs} from 'antd';
-import {createStyles} from 'antd-style';
-import React, {useState} from 'react';
+import { Footer } from '@/components';
+import { SYSTEM_LOGO } from '@/constants';
+import { register } from '@/services/ant-design-pro/api';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LoginForm, ProFormText } from '@ant-design/pro-components';
+import { Helmet, history } from '@umijs/max';
+import { Tabs, message } from 'antd';
+import { createStyles } from 'antd-style';
+import React, { useState } from 'react';
 import Settings from '../../../../config/defaultSettings';
 
 const useStyles = createStyles(({ token }) => {
@@ -54,28 +54,25 @@ const Register: React.FC = () => {
   // 表单提交
   const handleSubmit = async (values: API.RegisterParams) => {
     try {
-
       // 校验
-      const {userPassword, checkPassword} = values
+      const { userPassword, checkPassword } = values;
       if (userPassword !== checkPassword) {
-        message.error('密码不一致')
-        return
+        message.error('密码不一致');
+        return;
       }
 
       // 注册
       const id = await register(values);
-      if (id >= 0) {
+      if (id > 0) {
         const defaultLoginSuccessMessage = '注册成功！';
         message.success(defaultLoginSuccessMessage);
-
 
         const urlParams = new URL(window.location.href).searchParams;
         history.push(urlParams.get('redirect') || '/');
         return;
       } else {
-        throw new Error(`register error id = ${id}`)
+        throw new Error(`register error id = ${id}`);
       }
-
     } catch (error) {
       const defaultLoginFailureMessage = '注册失败，请重试！';
       console.log(error);
@@ -102,8 +99,8 @@ const Register: React.FC = () => {
             maxWidth: '75vw',
           }}
           logo={<img alt="logo" src={SYSTEM_LOGO} />}
-          title="编程导航"
-          subTitle="一个代码圈聚集地"
+          title="编程中心"
+          subTitle="最快解决编程问题的地方"
           initialValues={{
             autoLogin: true,
           }}
@@ -111,10 +108,8 @@ const Register: React.FC = () => {
             await handleSubmit(values as API.RegisterParams);
           }}
           submitter={{
-              searchConfig:
-                {submitText: '注册'}
-            }
-          }
+            searchConfig: { submitText: '注册' },
+          }}
         >
           <Tabs
             activeKey={type}
@@ -123,7 +118,7 @@ const Register: React.FC = () => {
             items={[
               {
                 key: 'account',
-                label: '账户密码注册',
+                label: '账号密码注册',
               },
             ]}
           />
@@ -136,11 +131,11 @@ const Register: React.FC = () => {
                   size: 'large',
                   prefix: <UserOutlined />,
                 }}
-                placeholder={'用户名'}
+                placeholder={'账号'}
                 rules={[
                   {
                     required: true,
-                    message: '用户名是必填项！',
+                    message: '账号是必填项！',
                   },
                 ]}
               />

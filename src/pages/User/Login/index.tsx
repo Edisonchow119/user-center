@@ -1,20 +1,15 @@
 import { Footer } from '@/components';
 import { SYSTEM_LOGO } from '@/constants';
 import { login } from '@/services/ant-design-pro/api';
-import {
-  AlipayCircleOutlined,
-  LockOutlined,
-  TaobaoCircleOutlined,
-  UserOutlined,
-  WeiboCircleOutlined,
-} from '@ant-design/icons';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginForm, ProFormCheckbox, ProFormText } from '@ant-design/pro-components';
-import {Helmet, history, Link, useModel} from '@umijs/max';
-import {Alert, Tabs, message, Divider, Space} from 'antd';
+import { Helmet, Link, history, useModel } from '@umijs/max';
+import { Alert, Space, Tabs, message } from 'antd';
 import { createStyles } from 'antd-style';
 import React, { useState } from 'react';
 import { flushSync } from 'react-dom';
 import Settings from '../../../../config/defaultSettings';
+
 const useStyles = createStyles(({ token }) => {
   return {
     action: {
@@ -50,20 +45,6 @@ const useStyles = createStyles(({ token }) => {
     },
   };
 });
-const ActionIcons = () => {
-  const { styles } = useStyles();
-  return (
-    <>
-      <AlipayCircleOutlined key="AlipayCircleOutlined" className={styles.action} />
-      <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={styles.action} />
-      <WeiboCircleOutlined key="WeiboCircleOutlined" className={styles.action} />
-    </>
-  );
-};
-const Lang = () => {
-  const { styles } = useStyles();
-  return null;
-};
 const LoginMessage: React.FC<{
   content: string;
 }> = ({ content }) => {
@@ -124,7 +105,6 @@ const Login: React.FC = () => {
           {'登录'}- {Settings.title}
         </title>
       </Helmet>
-      <Lang />
       <div
         style={{
           flex: '1',
@@ -137,8 +117,8 @@ const Login: React.FC = () => {
             maxWidth: '75vw',
           }}
           logo={<img alt="logo" src={SYSTEM_LOGO} />}
-          title="编程导航"
-          subTitle="一个代码圈聚集地"
+          title="编程中心"
+          subTitle="最快解决编程问题的地方"
           initialValues={{
             autoLogin: true,
           }}
@@ -153,13 +133,13 @@ const Login: React.FC = () => {
             items={[
               {
                 key: 'account',
-                label: '账户密码登录',
+                label: '账号密码登录',
               },
             ]}
           />
 
           {status === 'error' && loginType === 'account' && (
-            <LoginMessage content={'错误的用户名和密码'} />
+            <LoginMessage content={'错误的账号和密码'} />
           )}
           {type === 'account' && (
             <>
@@ -169,11 +149,11 @@ const Login: React.FC = () => {
                   size: 'large',
                   prefix: <UserOutlined />,
                 }}
-                placeholder={'用户名'}
+                placeholder={'账号'}
                 rules={[
                   {
                     required: true,
-                    message: '用户名是必填项！',
+                    message: '账号是必填项！',
                   },
                 ]}
               />
@@ -210,16 +190,17 @@ const Login: React.FC = () => {
               自动登录
             </ProFormCheckbox>
             <Space>
-            <Link to="/user/register">新用户注册</Link>
-            <a
-              style={{
-                float: 'right',
-              }}
-              href="https://wx.zsxq.com/dweb2/index/group/51122858222824"
-              target="_blank"
-            >
-              忘记密码
-            </a>
+              <Link to="/user/register">新用户注册</Link>
+              <a
+                style={{
+                  float: 'right',
+                }}
+                href="https://wx.zsxq.com/dweb2/index/group/51122858222824"
+                target="_blank"
+                rel="noreferrer"
+              >
+                忘记密码
+              </a>
             </Space>
           </div>
         </LoginForm>
