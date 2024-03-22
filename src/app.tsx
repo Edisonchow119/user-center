@@ -16,6 +16,8 @@ const loginPath = '/user/login';
 const NO_NEED_LOGIN_WHITE_LIST = ['/user/register', loginPath];
 
 export const request: RequestConfig = {
+  // 生成环境则下访问
+  baseURL: process.env.NODE_ENV === 'production' ? 'http://user-backend.code-nav.cn' : undefined,
   timeout: 1000000,
 };
 
