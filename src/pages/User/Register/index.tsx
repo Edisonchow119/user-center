@@ -183,11 +183,11 @@ const Register: React.FC = () => {
                   size: 'large',
                   prefix: <UserOutlined />,
                 }}
-                placeholder={'星球编号'}
+                placeholder={'邀请编号'}
                 rules={[
                   {
                     required: true,
-                    message: '星球编号是必填项！',
+                    message: '邀请编号是必填项！',
                   },
                 ]}
               />

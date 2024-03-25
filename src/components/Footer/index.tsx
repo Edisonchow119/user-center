@@ -11,21 +11,15 @@ const Footer: React.FC = () => {
       links={[
         {
           key: 'code',
-          title: 'AntD在手',
+          title: 'PAD很👍',
           href: 'https://pro.ant.design',
-          blankTarget: true,
-        },
-        {
-          key: 'antd',
-          title: '前端我有',
-          href: 'https://ant.design',
           blankTarget: true,
         },
         {
           key: 'github',
           title: (
             <>
-              <GithubOutlined /> edison Github
+              <GithubOutlined /> Github
             </>
           ),
           href: 'https://https://github.com/Edisonchow119',

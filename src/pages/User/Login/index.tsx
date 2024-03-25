@@ -117,8 +117,8 @@ const Login: React.FC = () => {
             maxWidth: '75vw',
           }}
           logo={<img alt="logo" src={SYSTEM_LOGO} />}
-          title="编程中心"
-          subTitle="最快解决编程问题的地方"
+          title="EDZ用户管理中心"
+          subTitle="一个管理用户的平台"
           initialValues={{
             autoLogin: true,
           }}
@@ -190,12 +190,15 @@ const Login: React.FC = () => {
               自动登录
             </ProFormCheckbox>
             <Space>
-              <Link to="/user/register">新用户注册</Link>
+              <Link to="/user/register" style={{ paddingLeft: 35 }}>
+                新用户注册
+              </Link>
               <a
                 style={{
+                  paddingLeft: 35,
                   float: 'right',
                 }}
-                href="https://wx.zsxq.com/dweb2/index/group/51122858222824"
+                href="javascript:"
                 target="_blank"
                 rel="noreferrer"
               >
