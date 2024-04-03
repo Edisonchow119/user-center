@@ -1,5 +1,4 @@
 import { Footer } from '@/components';
-import { SYSTEM_LOGO } from '@/constants';
 import { login } from '@/services/ant-design-pro/api';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginForm, ProFormCheckbox, ProFormText } from '@ant-design/pro-components';
@@ -116,9 +115,9 @@ const Login: React.FC = () => {
             minWidth: 280,
             maxWidth: '75vw',
           }}
-          logo={<img alt="logo" src={SYSTEM_LOGO} />}
-          title="编程中心"
-          subTitle="最快解决编程问题的地方"
+          logo={<img alt="logo" src="/logo.svg" />}
+          title="EDZ | 用户管理中心"
+          subTitle="一个简单易用的用户管理平台"
           initialValues={{
             autoLogin: true,
           }}
@@ -190,17 +189,9 @@ const Login: React.FC = () => {
               自动登录
             </ProFormCheckbox>
             <Space>
-              <Link to="/user/register">新用户注册</Link>
-              <a
-                style={{
-                  float: 'right',
-                }}
-                href="https://wx.zsxq.com/dweb2/index/group/51122858222824"
-                target="_blank"
-                rel="noreferrer"
-              >
-                忘记密码
-              </a>
+              <Link to="/user/register" style={{ marginLeft: '170px' }}>
+                新用户注册
+              </Link>
             </Space>
           </div>
         </LoginForm>

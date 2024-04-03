@@ -1,57 +1,41 @@
-# Ant Design Pro
+# EDZ 用户管理中心
 
-This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+作者： Edison
 
-## Environment Prepare
+## 项目介绍
 
-Install `node_modules`:
+> 一个用户管理客户信息的平台
 
-```bash
-npm install
-```
+## 初始化
 
-or
+点击 [这里](https://pro.ant.design/docs/getting-started) 快速初始化项目, 或按照参照 👇6 步初始化项目.
 
 ```bash
+npm i @ant-design/pro-cli -g
+
+pro create myapp
+
+🚀 Do you want the full amount or a simple scaffolding? (use arrow keys)
+❯ simple
+  complete
+
+cd myapp
+
+// 推荐使用yarn安装依赖
 yarn
+
+yarn run start
 ```
 
-## Provided Scripts
-
-Ant Design Pro provides some useful script to help you quick start and build with web project, code style check and test.
-
-Scripts provided in `package.json`. It's safe to modify or add additional script:
-
-### Start project
+或在直接拉取 DIY
 
 ```bash
-npm start
+// 创建空文件夹（示例：myapp）后打开终端（Terminal或cmd）
+git clone https://github.com/Edisonchow119/user-center.git
+
+cd myapp
+
+yarn
+
+yarn run start
 ```
-
-### Build project
-
-```bash
-npm run build
-```
-
-### Check code style
-
-```bash
-npm run lint
-```
-
-You can also use script to auto fix some lint error:
-
-```bash
-npm run lint:fix
-```
-
-### Test code
-
-```bash
-npm test
-```
-
-## More
-
-You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).

@@ -1,5 +1,4 @@
 import { Footer } from '@/components';
-import { SYSTEM_LOGO } from '@/constants';
 import { register } from '@/services/ant-design-pro/api';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginForm, ProFormText } from '@ant-design/pro-components';
@@ -98,9 +97,9 @@ const Register: React.FC = () => {
             minWidth: 280,
             maxWidth: '75vw',
           }}
-          logo={<img alt="logo" src={SYSTEM_LOGO} />}
-          title="编程中心"
-          subTitle="最快解决编程问题的地方"
+          logo={<img alt="logo" src="/logo.svg" />}
+          title="EDZ | 用户管理中心"
+          subTitle="一个简单易用的用户管理平台"
           initialValues={{
             autoLogin: true,
           }}
@@ -183,11 +182,11 @@ const Register: React.FC = () => {
                   size: 'large',
                   prefix: <UserOutlined />,
                 }}
-                placeholder={'星球编号'}
+                placeholder={'授权码'}
                 rules={[
                   {
                     required: true,
-                    message: '星球编号是必填项！',
+                    message: '授权码是必填项！',
                   },
                 ]}
               />

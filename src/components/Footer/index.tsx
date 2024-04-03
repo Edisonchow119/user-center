@@ -3,29 +3,20 @@ import { DefaultFooter } from '@ant-design/pro-components';
 import React from 'react';
 
 const Footer: React.FC = () => {
+  const defaultMessage = 'EDZ的代码纺织空间出品';
+  const currentYear = new Date().getFullYear();
   return (
     <DefaultFooter
       style={{
         background: 'none',
       }}
+      copyright={`${currentYear} ${defaultMessage}`}
       links={[
-        {
-          key: 'code',
-          title: 'AntD在手',
-          href: 'https://pro.ant.design',
-          blankTarget: true,
-        },
-        {
-          key: 'antd',
-          title: '前端我有',
-          href: 'https://ant.design',
-          blankTarget: true,
-        },
         {
           key: 'github',
           title: (
             <>
-              <GithubOutlined /> edison Github
+              <GithubOutlined /> Github
             </>
           ),
           href: 'https://https://github.com/Edisonchow119',
